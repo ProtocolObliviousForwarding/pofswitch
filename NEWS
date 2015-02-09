@@ -1,0 +1,102 @@
+
+-----------------------------------------------------------------------------
+pofswitch-1.3.4                                                    2014-01-08
+-----------------------------------------------------------------------------
+    1. Print state information after running POFSwitch. Users can also use 
+       "-s --state" option and "state" pof command to print state information.
+    2. Fix bug about CALCULATE_CHECKSUM log print.
+    3. Change the packet-length field in METADATA from local byte order to 
+       network byte order.
+    4. Add pof command: enable_promisc and disable_promisc, which can enable 
+       and disable promisc mode. Users can also enable or disable promisc mode
+       using "./configure --disable-promisc".
+    5. Fix bug that packet to send out will be received loopback if port is 
+       enable.
+	6. Fix bug about getting port information. Thanks Sergio for reporting 
+	   bug and offering the diff file.
+       
+-----------------------------------------------------------------------------
+pofswitch-1.3.3                                                    2013-09-29
+-----------------------------------------------------------------------------
+    1. Fix bug when the counter id is zero.
+    2. Print the version information when pofswitch starts.
+    3. Pofswitch will drop the packet which length is greater than Ethernet 
+       MTU.
+    4. Change the implementation of counter initial.
+    5. Controller can change the counter ID when modify a flow entry.
+    6. Improve log format.
+
+-----------------------------------------------------------------------------
+pofswitch-1.3.2                                                    2013-08-06
+-----------------------------------------------------------------------------
+	1. Implement the priority of the flow entry. If there are two flow entries
+	   match the packet, the one which has higher priority will be token. If
+	   these flow entries have the same priority, use the first one matched.
+	2. User can enable or disable the debug mode and color mode during the 
+	   POFSwitch running by using the pof_command: enable_debug, disable_debug,
+	   enable_color and disable_color.
+	3. Optimize source code.
+	4. Fix one bugs about log printing and port detection.
+	5. Improve log format.
+
+-----------------------------------------------------------------------------
+pofswitch-1.3.1                                                    2013-07-16
+-----------------------------------------------------------------------------
+	1. In Metadata, there are 128bytes memory to carry global information 
+	   between tables.The first 16bit is fixed to keep the packet length. The 
+	   next 8bit is fixed to keep the input port index. The next 8bit is 
+	   reserved. Other parts is freely defined.
+	2. Fix bug about getting port hwaddr.
+	3. Improve log format.
+
+-----------------------------------------------------------------------------
+pofswitch-1.3.0                                                    2013-07-08
+-----------------------------------------------------------------------------
+	1. Add start options "-h, --help" and "-v, --version" to print help
+	   and version information.
+	2. Add start options "-m, --man-clear". POFSwitch will automatically 
+	   clear the switch resource by default. If you want to maintain the
+	   flow tables, counters and so on, please use this option. But switch
+	   still clears the resource when reconnection is successful.
+	3. Add start options "-l, --log-file" to save the log to a file, which is
+	   /usr/local/var/log/pofswitch.log.
+	4. Add pof_command "version" to print version information during running.
+	5. Ignore the "lo" port.
+	6. Set the Forward Engine and Lookup Engine in device information to 
+	   POFSwitch version.
+	7. If datapath is enable, check whether the user is root or not. If not, 
+	   stop running POFSwitch and user should run again with "sudo".
+	8. Fix bug about detecting port.
+
+-----------------------------------------------------------------------------
+pofswitch-1.2.2                                                    2013-06-21
+-----------------------------------------------------------------------------
+	1. Add some debug information when errors exist.
+	2. Fix bug about meter delete.
+
+-----------------------------------------------------------------------------
+pofswitch-1.2.1                                                    2013-06-18
+-----------------------------------------------------------------------------
+	1. Fix bug.
+
+-----------------------------------------------------------------------------
+pofswitch-1.2.0                                                    2013-06-14
+-----------------------------------------------------------------------------
+	1. POFSwitch can detect port state, such as up or down and link or not, 
+	   dynamically.
+	2. The port without assigning IP address can also be detect by POSwitch 
+	   now.
+
+-----------------------------------------------------------------------------
+pofswitch-1.1.0                                                    2013-05-30
+-----------------------------------------------------------------------------
+	1. Match fields infomation of a processing packet is now get from the 
+	   describe of the next flow table, instead of the describe of the 
+	   GOTO_NEXT_TABLE.
+	2. Fix bugs.
+
+-----------------------------------------------------------------------------
+pofswitch-1.0							                           2013-03-15
+-----------------------------------------------------------------------------
+
+	pofswitch-1.0 was released in March 15th, 2013!
